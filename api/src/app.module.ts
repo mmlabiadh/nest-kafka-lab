@@ -7,6 +7,7 @@ import { BookingsModule } from './bookings/bookings.module';
 
 @Module({
   imports: [
+    BookingsModule,
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRootAsync({
       inject: [ConfigService],
@@ -14,7 +15,6 @@ import { BookingsModule } from './bookings/bookings.module';
         uri: config.get<string>('MONGO_URI'),
       }),
     }),
-    BookingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
